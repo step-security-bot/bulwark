@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM ubuntu:focal@sha256:0b897358ff6624825fb50d20ffb605ab0eaea77ced0adb8c6a4b756513dec6fc
 
 ENV DEBIAN_FRONTEND=noninteractive
 # apt packages

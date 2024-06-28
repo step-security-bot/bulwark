@@ -1,4 +1,4 @@
-FROM python:3.10.11-bullseye
+FROM python:3.10.11-bullseye@sha256:992065d5cb20c67ab2def49821c1ec8ef7d816d53966d27471a4eccef9d4564e
 
 RUN apt-get update
 

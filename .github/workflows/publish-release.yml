@@ -6,6 +6,9 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+
 jobs:
   publish-linux-binary:
     if: github.repository == 'bulwark-security/bulwark'
@@ -13,8 +16,13 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
+      with:
+        egress-policy: audit
+
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
     - name: Install Rust
       uses: dtolnay/rust-toolchain@21dc36fb71dd22e3317045c0c31a3f4249868b17
@@ -33,13 +41,13 @@ jobs:
         args: --release --target=x86_64-unknown-linux-gnu
 
     - name: Upload binary as an artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
       with:
         name: bulwark-cli.x86_64-unknown-linux-gnu
         path: target/release/bulwark-cli
 
     - name: Upload binary as release artifact
-      uses: actions/github-script@v6
+      uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6.4.1
       env:
         RELEASE_ID: ${{ github.event.release.id }}
       with:
@@ -60,8 +68,13 @@ jobs:
       contents: write
     runs-on: macos-latest
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
+      with:
+        egress-policy: audit
+
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
     - name: Install Rust
       uses: dtolnay/rust-toolchain@21dc36fb71dd22e3317045c0c31a3f4249868b17
@@ -84,13 +97,13 @@ jobs:
         args: --release --target=x86_64-apple-darwin
 
     - name: Upload binary as an artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
       with:
         name: bulwark-cli.x86_64-apple-darwin
         path: target/release/bulwark-cli
 
     - name: Upload binary as release artifact
-      uses: actions/github-script@v6
+      uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6.4.1
       env:
         RELEASE_ID: ${{ github.event.release.id }}
       with:
@@ -111,8 +124,13 @@ jobs:
       contents: write
     runs-on: macos-latest
     steps:
+    - name: Harden Runner
+      uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
+      with:
+        egress-policy: audit
+
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
     - name: Install Rust
       uses: dtolnay/rust-toolchain@21dc36fb71dd22e3317045c0c31a3f4249868b17
@@ -135,13 +153,13 @@ jobs:
         args: --release --target=aarch64-apple-darwin
 
     - name: Upload binary as an artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
       with:
         name: bulwark-cli.aarch64-apple-darwin
         path: target/release/bulwark-cli
 
     - name: Upload binary as release artifact
-      uses: actions/github-script@v6
+      uses: actions/github-script@d7906e4ad0b1822421a7e6a35d5ca353c962f410 # v6.4.1
       env:
         RELEASE_ID: ${{ github.event.release.id }}
       with:

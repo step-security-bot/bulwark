@@ -17,3 +17,73 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+
+  - package-ecosystem: gomod
+    directory: /crates/ext-processor/protobuf/data-plane-api
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /crates/ext-processor/protobuf/googleapis/.kokoro
+    schedule:
+      interval: daily
+
+  - package-ecosystem: docker
+    directory: /crates/ext-processor/protobuf/protoc-gen-validate
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /crates/ext-processor/protobuf/protoc-gen-validate
+    schedule:
+      interval: daily
+
+  - package-ecosystem: pip
+    directory: /crates/ext-processor/protobuf/protoc-gen-validate
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /crates/ext-processor/protobuf/protoc-gen-validate/tests
+    schedule:
+      interval: daily
+
+  - package-ecosystem: gomod
+    directory: /crates/ext-processor/protobuf/xds/go
+    schedule:
+      interval: daily
+
+  - package-ecosystem: cargo
+    directory: /crates/sdk/examples/blank-slate
+    schedule:
+      interval: daily
+
+  - package-ecosystem: cargo
+    directory: /crates/sdk/examples/evil-bit
+    schedule:
+      interval: daily
+
+  - package-ecosystem: cargo
+    directory: /tests/plugins/multi-phase-plugin-a
+    schedule:
+      interval: daily
+
+  - package-ecosystem: cargo
+    directory: /tests/plugins/multi-phase-plugin-b
+    schedule:
+      interval: daily
+
+  - package-ecosystem: cargo
+    directory: /tests/plugins/redis-plugin
+    schedule:
+      interval: daily
+
+  - package-ecosystem: cargo
+    directory: /tests/plugins/smoke-test
+    schedule:
+      interval: daily
+
+  - package-ecosystem: maven
+    directory: /crates/ext-processor/protobuf/protoc-gen-validate/java
+    schedule:
+      interval: daily
